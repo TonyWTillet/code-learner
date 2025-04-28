@@ -65,6 +65,11 @@ public class Quiz implements Activity {
             System.out.println("Continue to practice ! Added 10 XP");
             player.addXp(10);
         }
+        
+        // Save the player
+        DatabaseManager.savePlayer(player);
+        // Close the scanner
+        scanner.close();
     }
     
     // Add a question to the quiz

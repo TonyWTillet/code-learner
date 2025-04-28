@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.List;
 public class MenuService {
 
     public static void showLanguageMenu(Player player) {
@@ -84,29 +84,44 @@ public class MenuService {
     }
 
     private static void launchQuiz(Player player, String language) {
-        if (language.equals("Java")) {
-            Quiz quiz = new Quiz("Quiz Java Débutant");
-
-            quiz.addQuestion(
-                "Que signifie JDK ?",
-                java.util.List.of("Java Development Kit", "Java Deployment Key", "Just Download Kit", "Java Default Key"),
-                0
-            );
-            quiz.addQuestion(
-                "Mot-clé pour créer un objet en Java ?",
-                java.util.List.of("create", "build", "new", "instance"),
-                2
-            );
-            quiz.addQuestion(
-                "Comment commence un programme Java ?",
-                java.util.List.of("start()", "run()", "main()", "init()"),
-                2
-            );
-
-            quiz.play(player);
-            DatabaseManager.savePlayer(player);
-        } else {
-            System.out.println("Quiz pour " + language + " pas encore disponible !");
+        Scanner scanner = new Scanner(System.in);
+    
+        List<QuizInfo> availableQuizzes = DatabaseManager.loadQuizzesByLanguage(language);
+    
+        if (availableQuizzes.isEmpty()) {
+            System.out.println("Aucun quiz disponible pour " + language + ".");
+            return;
         }
+    
+        System.out.println("\nChoisissez votre quiz :");
+        for (int i = 0; i < availableQuizzes.size(); i++) {
+            System.out.println((i + 1) + ". " + availableQuizzes.get(i).getTitle());
+        }
+        System.out.println((availableQuizzes.size() + 1) + ". Retour");
+    
+        System.out.print("Votre choix : ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+    
+        if (choice == availableQuizzes.size() + 1) {
+            System.out.println("Retour au menu précédent...");
+            return;
+        }
+    
+        if (choice < 1 || choice > availableQuizzes.size()) {
+            System.out.println("Option invalide.");
+            return;
+        }
+    
+        QuizInfo selectedQuiz = availableQuizzes.get(choice - 1);
+        List<Question> questions = DatabaseManager.loadQuestionsForQuiz(selectedQuiz.getId());
+        Quiz quiz = new Quiz(selectedQuiz.getTitle(), questions);
+        
+        for (Question q : questions) {
+            quiz.addQuestion(q.getText(), q.getOptions(), q.getCorrectOption());
+        }
+    
+        quiz.play(player);
+        DatabaseManager.savePlayer(player);
     }
 }
