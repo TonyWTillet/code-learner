@@ -1,0 +1,1 @@
+[2025-04-28 11:43:17] [ERROR] Erreur création joueur : [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint failed (UNIQUE constraint failed: players.name)

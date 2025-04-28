@@ -1,5 +1,8 @@
 # 🎮 Apprends-en-Jouant - Projet Java Gamifié
 
+![Java](https://img.shields.io/badge/Java-21-blue?logo=java)
+![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey?logo=sqlite)
+
 Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue pour **apprendre la programmation** tout en **accumulant de l'expérience (XP)**, **passer des niveaux** et **débloquer des badges** 🎖️.
 
 L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** comme dans un jeu vidéo !

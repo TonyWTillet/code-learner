@@ -32,6 +32,15 @@ public class Player {
         return badges;
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+    
+
     // Add XP and Level Up
     public void addXp(int amount) {
         xp += amount;
