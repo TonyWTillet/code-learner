@@ -1,0 +1,1 @@
+[2025-04-29 15:57:08] [ERROR] Erreur chargement quizzes : path to 'src/main/resources/database.db': 'D:\laragon\www\code-learner\src\main\resources' does not exist

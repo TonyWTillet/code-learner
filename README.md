@@ -18,18 +18,23 @@ L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** co
 - 💾 Sauvegarde et chargement du profil via **base de données SQLite**
 - ⚡ Système de montée de niveau et attribution de badges
 - 📈 Architecture évolutive pour intégrer de nouveaux types d'activités (Mini-projets, Articles, Challenges)
+- 🔄 Mécanisme de retry robuste pour les opérations de base de données
 
 ---
 
 ## 🛠️ Technologies utilisées
 
-| Technologie | Rôle |
-|:---|:---|
-| **Java 21** | Langage principal |
-| **SQLite (JDBC)** | Sauvegarde et persistance des données |
-| **Maven/Gradle** (optionnel futur) | Gestion des dépendances |
-| **Gson** (optionnel futur) | Sauvegarde JSON alternative |
-| **Terminal** | Interface actuelle (console), futur passage possible en JavaFX |
+| Technologie | Version | Rôle |
+|:---|:---|:---|
+| **Java** | 21 | Langage principal |
+| **SQLite** | 3.x | Base de données embarquée |
+| **JDBC** | 4.x | API de connexion à la base de données |
+| **WAL Mode** | - | Mode journal pour améliorer les performances |
+| **Gradle** | - | Gestion des dépendances (futur) |
+| **Gson** | - | Sérialisation JSON (futur) |
+| **JUnit** | 5.x | Tests unitaires (futur) |
+| **JavaFX** | 21 | Interface graphique (futur) |
+| **Terminal** | - | Interface actuelle (console) |
 
 ---
 
@@ -37,15 +42,16 @@ L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** co
 
 ```
 src/
-  Main.java               // Démarrage du jeu
-  Player.java              // Gestion du profil joueur
-  Question.java            // Modèle de question (QCM)
-  Quiz.java                // Modèle de Quiz complet
-  Activity.java            // Interface pour les activités
-  DatabaseManager.java     // Gestion de la connexion et des opérations SQLite
-  TestQuiz.java            // Classe de test du Quiz
-
-apprends_en_jouant.db       // (Fichier SQLite généré automatiquement)
+  main/
+    java/
+      app/      // Navigation, menus, lancement du jeu
+      core/     // Modèles de données : Player, Quiz, Question, etc.
+      db/       // Gestion base de données : DatabaseManager, DatabaseWorker…
+      utils/    // (actuellement vide)
+    ressources/ // Base SQLite (database.db), logs
+  test/
+    java/
+      test/     // Tests manuels (TestQuiz, TestPlayer, TestCreatePlayer)
 ```
 
 ---
@@ -55,6 +61,17 @@ apprends_en_jouant.db       // (Fichier SQLite généré automatiquement)
 - **Singleton** sur la classe `DatabaseManager` (connexion unique à la base)
 - **Factory** (bientôt) pour la génération dynamique d'activités (Quiz, Mini-Projet, etc.)
 - **Strategy** (bientôt) pour ajouter des comportements différents aux activités
+- **Transaction** pour garantir l'intégrité des données
+
+---
+
+## 🔧 Optimisations techniques
+
+- **Gestion robuste des transactions SQLite** avec commit/rollback
+- **Mécanisme de retry** avec délai exponentiel pour les opérations de base de données
+- **Configuration optimisée de SQLite** (WAL mode, timeout augmenté, synchronisation normale)
+- **Gestion explicite des connexions** pour éviter les fuites de ressources
+- **Journalisation améliorée** pour faciliter le débogage
 
 ---
 
@@ -64,22 +81,31 @@ apprends_en_jouant.db       // (Fichier SQLite généré automatiquement)
 2. Installer **Java 21** et **SQLite JDBC** ([téléchargement ici](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc)).
 3. Compiler :
    ```bash
-   javac -cp ".:sqlite-jdbc-<version>.jar" src/*.java
+   javac -cp ".:sqlite-jdbc-<version>.jar" src/main/java/app/*.java src/main/java/core/*.java src/main/java/db/*.java
    ```
-4. Lancer :
+4. Lancer un test manuel (exemple) :
    ```bash
-   java -cp ".:sqlite-jdbc-<version>.jar:src" TestQuiz
+   java -cp ".:sqlite-jdbc-<version>.jar:src/main/java:src/test/java" test.java.test.TestQuiz
    ```
+
+---
+
+## 🧪 Tests
+
+- Les tests sont **manuels** : lancez les classes du dossier `src/test/java/test/` pour vérifier les fonctionnalités principales (création de joueur, quiz, etc.).
+- Aucun framework de test automatisé (JUnit) n'est utilisé pour l'instant.
 
 ---
 
 ## 🔥 Objectifs futurs (Roadmap)
 
-- Intégration d'une **interface graphique (JavaFX)**.
-- **Progression multi-joueurs** avec scores et classements.
-- **Mini-projets** à réaliser pour débloquer de nouveaux badges.
-- Notifications et rappels pour encourager l'apprentissage quotidien.
-- Génération automatique de quiz basés sur le niveau de compétence.
+- Intégration d'une **interface graphique (JavaFX)**
+- **Progression multi-joueurs** avec scores et classements
+- **Mini-projets** à réaliser pour débloquer de nouveaux badges
+- Notifications et rappels pour encourager l'apprentissage quotidien
+- Génération automatique de quiz basés sur le niveau de compétence
+- **Pool de connexions** pour améliorer les performances en cas de charge élevée
+- Passage à des tests automatisés (JUnit)
 
 ---
 
