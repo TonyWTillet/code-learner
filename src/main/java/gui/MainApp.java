@@ -22,6 +22,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        System.out.println("App lancée");
         primaryStage.setTitle("Code Learner");
         showLoginScene(primaryStage);
     }
@@ -73,7 +74,8 @@ public class MainApp extends Application {
         });
     
         layout.getChildren().addAll(welcome, nameField, createBtn, connectBtn, statusLabel);
-        stage.setScene(new Scene(layout, 400, 250));
+        stage.setScene(new Scene(layout, 800, 400));
+        stage.show(); 
     }
     
 

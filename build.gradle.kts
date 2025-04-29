@@ -1,6 +1,6 @@
 plugins {
-    id("org.openjfx.javafxplugin") version "0.0.14"
     application
+    id("org.openjfx.javafxplugin") version "0.0.14"
 }
 
 repositories {
@@ -15,7 +15,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("gui.MainApp") 
+    mainClass.set("gui.MainApp")
 }
 
 javafx {
