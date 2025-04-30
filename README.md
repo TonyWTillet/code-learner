@@ -1,20 +1,18 @@
-# 🎮 Apprends-en-Jouant - Projet Java Gamifié
+# 🎮 Code Learner - Projet Java Gamifié
 
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=java)
 ![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey?logo=sqlite)
 
-Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue pour **apprendre la programmation** tout en **accumulant de l'expérience (XP)**, **passer des niveaux** et **débloquer des badges** 🎖️.
-
-L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** comme dans un jeu vidéo !
+Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue pour **apprendre la programmation** tout en **accumulant de l'expérience (XP)**, **passant des niveaux** et **débloquant des badges**. L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** inspiré des jeux vidéo !
 
 ---
 
-## 📚 Fonctionnalités principales
+## 🚀 Fonctionnalités principales
 
-- 👤 Gestion de profil joueur (pseudo, niveau, XP, badges)
-- 📋 Série de quiz thématiques (ex : Java Débutant)
-- 🎯 Calcul automatique de l'expérience gagnée
-- 🧠 Quiz sous forme de **QCM** avec validation automatique
+- 👤 Gestion complète du profil joueur (pseudo, niveau, XP, badges)
+- 📋 Quiz thématiques (ex : Java Débutant, Python, C++)
+- 🎯 Calcul automatique de l'expérience et progression dynamique
+- 🧠 Quiz sous forme de QCM avec correction instantanée
 - 💾 Sauvegarde et chargement du profil via **base de données SQLite**
 - ⚡ Système de montée de niveau et attribution de badges
 - 📈 Architecture évolutive pour intégrer de nouveaux types d'activités (Mini-projets, Articles, Challenges)
@@ -33,12 +31,12 @@ L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** co
 | **Gradle** | - | Gestion des dépendances (futur) |
 | **Gson** | - | Sérialisation JSON (futur) |
 | **JUnit** | 5.x | Tests unitaires (futur) |
-| **JavaFX** | 21 | Interface graphique (futur) |
-| **Terminal** | - | Interface actuelle (console) |
+| **JavaFX** | 21 | Interface graphique (version courante) |
+| **Terminal** | - | Interface actuelle (ancienne version) |
 
 ---
 
-## 🏩 Architecture du projet
+## 🏗️ Architecture du projet
 
 ```
 src/
@@ -56,7 +54,7 @@ src/
 
 ---
 
-## 🧱 Design Patterns appliqués
+## 🧩 Design Patterns et bonnes pratiques
 
 - **Singleton** sur la classe `DatabaseManager` (connexion unique à la base)
 - **Factory** (bientôt) pour la génération dynamique d'activités (Quiz, Mini-Projet, etc.)
@@ -65,51 +63,50 @@ src/
 
 ---
 
-## 🔧 Optimisations techniques
+## ⚡ Optimisations techniques
 
 - **Gestion robuste des transactions SQLite** avec commit/rollback
-- **Mécanisme de retry** avec délai exponentiel pour les opérations de base de données
-- **Configuration optimisée de SQLite** (WAL mode, timeout augmenté, synchronisation normale)
+- **Mécanisme de réessaie** avec délai exponentiel pour les accès concurrents à la base
+- **Configuration optimisée de SQLite** (mode WAL, timeout augmenté, synchronisation normale)
 - **Gestion explicite des connexions** pour éviter les fuites de ressources
 - **Journalisation améliorée** pour faciliter le débogage
-
----
-
-## 🚀 Comment lancer le projet
-
-1. Télécharger le projet.
-2. Installer **Java 21** et **SQLite JDBC** ([téléchargement ici](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc)).
-3. Compiler :
-   ```bash
-   javac -cp ".:sqlite-jdbc-<version>.jar" src/main/java/app/*.java src/main/java/core/*.java src/main/java/db/*.java
-   ```
-4. Lancer un test manuel (exemple) :
-   ```bash
-   java -cp ".:sqlite-jdbc-<version>.jar:src/main/java:src/test/java" test.java.test.TestQuiz
-   ```
 
 ---
 
 ## 🧪 Tests
 
 - Les tests sont **manuels** : lancez les classes du dossier `src/test/java/test/` pour vérifier les fonctionnalités principales (création de joueur, quiz, etc.).
-- Aucun framework de test automatisé (JUnit) n'est utilisé pour l'instant.
+- Passage à des tests automatisés (JUnit) prévu dans la feuille de route.
 
 ---
 
-## 🔥 Objectifs futurs (Roadmap)
+## 🚦 Comment lancer le projet
 
-- Intégration d'une **interface graphique (JavaFX)**
+1. **Téléchargez** le projet.
+2. Installez **Java 21** et **SQLite JDBC** ([téléchargement ici](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc)).
+3. Compilez :
+   ```bash
+   javac -cp ".:sqlite-jdbc-<version>.jar" src/main/java/app/*.java src/main/java/core/*.java src/main/java/db/*.java
+   ```
+4. Lancez un test manuel (exemple) :
+   ```bash
+   java -cp ".:sqlite-jdbc-<version>.jar:src/main/java:src/test/java" test.java.test.TestQuiz
+   ```
+
+---
+
+## 🔥 Feuille de route (Roadmap)
+
 - **Progression multi-joueurs** avec scores et classements
 - **Mini-projets** à réaliser pour débloquer de nouveaux badges
 - Notifications et rappels pour encourager l'apprentissage quotidien
-- Génération automatique de quiz basés sur le niveau de compétence
+- Génération automatique de quiz adaptés au niveau
 - **Pool de connexions** pour améliorer les performances en cas de charge élevée
 - Passage à des tests automatisés (JUnit)
 
 ---
 
-## 📣 Pourquoi ce projet ?
+## 💡 Pourquoi ce projet ?
 
 Ce projet est né d'une volonté de **rendre l'apprentissage de la programmation plus motivant** 🎯.  
 En combinant des mécanismes de **gamification** et des **concepts fondamentaux de Java**, il permet à tout développeur débutant ou intermédiaire de progresser tout en s'amusant.
