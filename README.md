@@ -86,12 +86,21 @@ src/
 2. Installez **Java 21** et **SQLite JDBC** ([téléchargement ici](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc)).
 3. Compilez :
    ```bash
-   javac -cp ".:sqlite-jdbc-<version>.jar" src/main/java/app/*.java src/main/java/core/*.java src/main/java/db/*.java
+   ./gradlew clean build
    ```
-4. Lancez un test manuel (exemple) :
+4. Lancez un test manuel (exemple console) :
    ```bash
-   java -cp ".:sqlite-jdbc-<version>.jar:src/main/java:src/test/java" test.java.test.TestQuiz
+   java -cp ".:build/classes/java/main:build/resources/main" test.java.test.TestQuiz
    ```
+5. **Pour lancer l'interface graphique JavaFX** :
+   ```bash
+   ./gradlew run
+   ```
+   ou, si vous souhaitez lancer manuellement :
+   ```bash
+   java --module-path /chemin/vers/javafx-sdk-21/lib --add-modules javafx.controls,javafx.fxml -cp "build/classes/java/main;build/resources/main" gui.MainApp
+   ```
+   > Remplacez `/chemin/vers/javafx-sdk-21/lib` par le chemin réel de votre SDK JavaFX.
 
 ---
 
