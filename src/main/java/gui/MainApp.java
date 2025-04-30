@@ -22,6 +22,10 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        DatabaseManager.createTableIfNotExists();
+        DatabaseManager.createQuizTable();
+        DatabaseManager.createQuestionTable();
+        DatabaseManager.createCompletedQuizTable();
         System.out.println("App lancée");
         primaryStage.setTitle("Code Learner");
         showLoginScene(primaryStage);
@@ -151,7 +155,7 @@ public class MainApp extends Application {
             quizListView.getItems().add(quiz.getTitle());
         }
     
-        Button startBtn = new Button("▶️ Démarrer le quiz");
+        Button startBtn = new Button("📋 Démarrer le quiz"); 
         Button backBtn = new Button("⬅ Retour");
     
         startBtn.setOnAction(e -> {

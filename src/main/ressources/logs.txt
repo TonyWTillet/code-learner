@@ -1,2 +1,2 @@
-[2025-04-29 15:57:08] [ERROR] Erreur chargement quizzes : path to 'src/main/resources/database.db': 'D:\laragon\www\code-learner\src\main\resources' does not exist
-[2025-04-30 00:53:30] [ERROR] Erreur chargement quizzes : no such column: 'language'
+[2025-04-30 14:11:49] [ERROR] Erreur chargement quizzes : no such column: 'language'
+[2025-04-30 14:15:03] [ERROR] Erreur chargement quizzes : no such column: 'language'

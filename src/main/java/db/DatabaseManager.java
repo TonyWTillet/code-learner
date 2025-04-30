@@ -163,7 +163,7 @@ public class DatabaseManager {
     public static List<QuizInfo> loadQuizzesByLanguage(String language) {
         waitUntilQueueIsEmpty();
         List<QuizInfo> quizzes = new ArrayList<>();
-        String sql = "SELECT id, title FROM quizzes WHERE language = ?";
+        String sql = "SELECT id, title, language FROM quizzes WHERE language = ?";
         try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, language);
             try (ResultSet rs = pstmt.executeQuery()) {
