@@ -1,14 +1,21 @@
 # 🎮 Code Learner - Projet Java Gamifié
+# 🎮 Code Learner - Projet Java Gamifié
 
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=java)
 ![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey?logo=sqlite)
 
 Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue pour **apprendre la programmation** tout en **accumulant de l'expérience (XP)**, **passant des niveaux** et **débloquant des badges**. L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** inspiré des jeux vidéo !
+Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue pour **apprendre la programmation** tout en **accumulant de l'expérience (XP)**, **passant des niveaux** et **débloquant des badges**. L'objectif ? **Motiver** l'apprentissage avec un système de **récompenses** inspiré des jeux vidéo !
 
 ---
 
 ## 🚀 Fonctionnalités principales
+## 🚀 Fonctionnalités principales
 
+- 👤 Gestion complète du profil joueur (pseudo, niveau, XP, badges)
+- 📋 Quiz thématiques (ex : Java Débutant, Python, C++)
+- 🎯 Calcul automatique de l'expérience et progression dynamique
+- 🧠 Quiz sous forme de QCM avec correction instantanée
 - 👤 Gestion complète du profil joueur (pseudo, niveau, XP, badges)
 - 📋 Quiz thématiques (ex : Java Débutant, Python, C++)
 - 🎯 Calcul automatique de l'expérience et progression dynamique
@@ -33,9 +40,12 @@ Bienvenue dans **Apprends-en-Jouant**, une application Java gamifiée conçue po
 | **JUnit** | 5.x | Tests unitaires (futur) |
 | **JavaFX** | 21 | Interface graphique (version courante) |
 | **Terminal** | - | Interface actuelle (ancienne version) |
+| **JavaFX** | 21 | Interface graphique (version courante) |
+| **Terminal** | - | Interface actuelle (ancienne version) |
 
 ---
 
+## 🏗️ Architecture du projet
 ## 🏗️ Architecture du projet
 
 ```
@@ -55,6 +65,7 @@ src/
 ---
 
 ## 🧩 Design Patterns et bonnes pratiques
+## 🧩 Design Patterns et bonnes pratiques
 
 - **Singleton** sur la classe `DatabaseManager` (connexion unique à la base)
 - **Factory** (bientôt) pour la génération dynamique d'activités (Quiz, Mini-Projet, etc.)
@@ -64,8 +75,11 @@ src/
 ---
 
 ## ⚡ Optimisations techniques
+## ⚡ Optimisations techniques
 
 - **Gestion robuste des transactions SQLite** avec commit/rollback
+- **Mécanisme de réessaie** avec délai exponentiel pour les accès concurrents à la base
+- **Configuration optimisée de SQLite** (mode WAL, timeout augmenté, synchronisation normale)
 - **Mécanisme de réessaie** avec délai exponentiel pour les accès concurrents à la base
 - **Configuration optimisée de SQLite** (mode WAL, timeout augmenté, synchronisation normale)
 - **Gestion explicite des connexions** pour éviter les fuites de ressources
@@ -73,6 +87,14 @@ src/
 
 ---
 
+## 🧪 Tests
+
+- Les tests sont **manuels** : lancez les classes du dossier `src/test/java/test/` pour vérifier les fonctionnalités principales (création de joueur, quiz, etc.).
+- Passage à des tests automatisés (JUnit) prévu dans la feuille de route.
+
+---
+
+## 🚦 Comment lancer le projet
 ## 🧪 Tests
 
 - Les tests sont **manuels** : lancez les classes du dossier `src/test/java/test/` pour vérifier les fonctionnalités principales (création de joueur, quiz, etc.).
@@ -110,11 +132,13 @@ src/
 - **Mini-projets** à réaliser pour débloquer de nouveaux badges
 - Notifications et rappels pour encourager l'apprentissage quotidien
 - Génération automatique de quiz adaptés au niveau
+- Génération automatique de quiz adaptés au niveau
 - **Pool de connexions** pour améliorer les performances en cas de charge élevée
 - Passage à des tests automatisés (JUnit)
 
 ---
 
+## 💡 Pourquoi ce projet ?
 ## 💡 Pourquoi ce projet ?
 
 Ce projet est né d'une volonté de **rendre l'apprentissage de la programmation plus motivant** 🎯.  
